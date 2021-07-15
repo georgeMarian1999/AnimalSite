@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="functionsJavaScript.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <a href="javascript:void(0)" onclick="showDate()">
+      <h4>Afiseaza data curenta formatata</h4>
+    </a>
+    <div>
+      <p id="data"></p>
+    </div>
+  </div>
+  <div>
+    <a href="javascript:void(0)" onclick="crtWindow()">
+      <h4>Printeaza window</h4>
+    </a>
+  </div>
+  <div>
+    <a href="javascript:void(0)" onclick="printDate()">
+      <h4>Afiseaza data</h4>
+    </a>
+    <div>
+      <p id="data1"></p>
+    </div>
+  </div>
+  <div>
+    <a href="javascript:void(0)" onclick="calculateArea()">
+      <h4>Afiseaza aria</h4>
+    </a>
+    <input id="a" type="text">
+    <input id="b" type="text">
+    <input id="c" type="text">
+    <div>
+      <p id="area"></p>
+    </div>
+  </div>
+  <div>
+    <a href="javascript:void(0)" onclick="rotate()">
+      <h4>Roteste</h4>
+    </a>
+    <div>
+      <p id="rotate">
+        w3resource
+      </p>
+    </div>
+  </div>
+  <div>
+    <a href="javascript:void(0)" onclick="checkYear()">
+      <h4>Check leap year</h4>
+    </a>
+    <input type="text" id="year">
+    <div>
+      <p id="leapYear">
+      </p>
+    </div>
+  </div>
+  <div>
+    <a href="javascript:void(0)" onclick="firstJan()">
+      <h4>Find 1st Jan</h4>
+    </a>
+  </div>
+  <div>
+    <a href="javascript:void(0)" onclick="guessNumber()">
+      <h4>Guess the number</h4>
+    </a>
+    <input type="text" id="guess">
+  </div>
+  <div>
+<br>
+    <label for="1stNum">1st Number</label>
+    <input type="text" id="1stNum"><br>
+    <label for="1stNum">2nd Number</label>
+    <input type="text" id="2ndNum"><br>
+    <button onclick="calculate(divide)">Divide</button>
+    <button onclick="calculate(multiply)">Multiply</button>
+    <div>
+      <p id="result">The result is:</p>
+    </div>
+  </div>
+  <div>
+    <br>
+        <label for="celsius">Celsius</label>
+        <input onchange="convertCelsius()" type="text" id="celsius"><br>
+        <label for="faren">Fahrenheit</label>
+        <input onchange="convertFahren()" type="text" id="faren"><br>
+    </div>
+    <div>
+      <br>
+      <button onclick="showURL()">
+        Show URL
+      </button>
+    </div>
+</body>
+</html>

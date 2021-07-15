@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+}
+
+#home {
+  min-height: 100vh;
+  font-size: 20px;
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  background: white;
+  min-height: 85vh;
+  width: 70%;
+  background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+  border-radius: 2rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+ul#slider {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  text-align: center;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+@keyframes fade {
+  from {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.shake {
+  animation-name: shake;
+  animation-duration: 2s;
+}
+li.sliderItem {
+  animation-name: fade;
+  animation-duration: 1s;
+  display: none;
+  margin: 25px;
+  border-width: 5px;
+  border-color: black;
+  border-style: solid;
+  padding: 20px;
+}
+li.sliderItem.shown {
+  display: flex;
+}
+.nextButton {
+  position: absolute;
+  color: black;
+  font-size: 25px;
+  bottom: 20px;
+  right: 35px;
+}
+a {
+  color: black;
+}
+.content {
+  padding: 15px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  opacity: 1;
+}
+.previousButton {
+  position: absolute;
+  color: black;
+  font-size: 25px;
+  bottom: 20px;
+  left: 35px;
+}
+.addButton {
+  position: absolute;
+  color: black;
+  font-size: 25px;
+  bottom: 20px;
+}
+.petButton {
+  position: absolute;
+  color: black;
+  font-size: 25px;
+  bottom: 100px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+@keyframes sweepModal {
+  0% {
+    transform: translateY(-100px);
+    /* opacity: 0; */
+  }
+  100% {
+    transform: translateY(0);
+    /* opacity: 1; */
+  }
+}
+.modalContent {
+  animation-name: sweepModal;
+  animation-duration: 1s;
+  margin: auto;
+  padding: 20px;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  display: flex;
+  border-radius: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #888;
+  width: 60%;
+}
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+}
+input {
+  margin: 10px;
+}
+button {
+  margin: 15px;
+  padding: 10px;
+  border-radius: 1rem;
+}
+select {
+  padding: 5px;
+  margin: 10px;
+}
+#saveButton {
+  cursor: pointer;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+}
+#cancelButton {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    #f78ca0 0%,
+    #f9748f 19%,
+    #fd868c 60%,
+    #fe9a8b 100%
+  );
+}
+@keyframes petAnimate {
+  0% {
+    transform: translateX(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+.animatedText {
+  display: none;
+  /* position: absolute; */
+  /* width: 100%;
+  height: 100%;
+  top: 0; */
+  animation-name: petAnimate;
+  animation-duration: 3s;
+  left: 0;
+}

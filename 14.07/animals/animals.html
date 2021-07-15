@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<script src="https://kit.fontawesome.com/97b9573b54.js" crossorigin="anonymous"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script type="text/javascript" src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animals</title>
+</head>
+<body>
+  <template id="animalItem">
+    <li class="sliderItem">
+      <div class="content">
+        <h4></h4>
+        <i class="animalIcon fas"></i>
+        <h4>Number of pets: </h4>
+      </div>
+    </li>
+  </template>
+  <div id="home">
+    <div class="wrapper">
+      <!-- <div id="animatedText"><h3>Miaw</h3></div> -->
+      <audio src="dog.mp3" hidden type="audio/mpeg" id="dogSound"></audio>
+      <audio src="cat.mp3" hidden type="audio/mpeg" id="catSound"></audio>
+      <div class="nextButton"><a href="javascript:void(0)" onclick="nextSlide()"><i class="fas fa-forward"></i></a></div>
+      <div class="previousButton"><a href="javascript:void(0)" onclick="previousSlide()"><i class="fas fa-backward"></i></a></div>
+      <div class="petButton"><a href="javascript:void(0)" onclick="pet()"><i class="fas fa-hand-sparkles"></i></a></div>
+      <div>
+        <ul id="slider">
+      
+        </ul>
+      </div>
+        
+      <div class="addButton"><a href="javascript:void(0)" onclick="addAnimal()"><i class="fas fa-plus-circle"></i></a></div>
+    </div>
+  </div>
+  <div id="addModal" class="modal">
+    <div class="modalContent">
+      <label for="animalName">Name:</label>
+      <input oninput="checkName()" id="animalName" type="text" class="name">
+      <label for="type">
+        Type:
+      </label>
+      <select id="typeSelect" class="type">
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+      </select>
+      <div class="buttonWrapper">
+        <button id="cancelButton" onclick="closeModal()">Cancel</button>
+        <button id="saveButton" disabled onclick="saveAnimal()">Save</button>
+      </div>
+    </div>
+  
+  </div>
+  
+</body>
+</html>
