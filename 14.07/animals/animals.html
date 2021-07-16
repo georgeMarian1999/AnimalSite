@@ -13,15 +13,17 @@
   <template id="animalItem">
     <li class="sliderItem">
       <div class="content">
-        <h4></h4>
-        <i class="animalIcon fas"></i>
-        <h4>Number of pets: </h4>
+        <h4 id="h4Name"></h4>
+        <div id="iconTextWrapper">
+          <i class="animalIcon fas"></i>
+          <div id="animatedText"></div>
+        </div>
+        <h4 id="numberPets">Number of pets: </h4>
       </div>
     </li>
   </template>
   <div id="home">
     <div class="wrapper">
-      <!-- <div id="animatedText"><h3>Miaw</h3></div> -->
       <audio src="dog.mp3" hidden type="audio/mpeg" id="dogSound"></audio>
       <audio src="cat.mp3" hidden type="audio/mpeg" id="catSound"></audio>
       <div class="nextButton"><a href="javascript:void(0)" onclick="nextSlide()"><i class="fas fa-forward"></i></a></div>

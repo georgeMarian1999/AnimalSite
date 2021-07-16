@@ -180,13 +180,23 @@ select {
     opacity: 0;
   }
 }
-.animatedText {
+#animatedText {
   display: none;
-  /* position: absolute; */
-  /* width: 100%;
-  height: 100%;
-  top: 0; */
   animation-name: petAnimate;
   animation-duration: 3s;
-  left: 0;
+}
+#iconTextWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#h4Name{
+  padding: 10px;
+}
+#animalIcon{
+  padding: 10px;
+}
+#numberPets {
+  padding: 10px;
+
 }

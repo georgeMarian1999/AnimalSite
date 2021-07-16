@@ -40,18 +40,15 @@ function pet() {
   let animals = JSON.parse(localStorage.getItem("animals"));
   animals[slideindex].pets += 1;
   localStorage.setItem("animals",JSON.stringify(animals));
-  var listItem = document.getElementsByClassName("sliderItem")[slideindex];
-  listItem.lastChild.lastChild.innerHTML = "Number of pets: " + animals[slideindex].pets;
-  if(animals[slideindex].type === "dog"){
-    document.getElementById("dogSound").play();
-  }
-  else document.getElementById("catSound").play();
+  let listItem = document.getElementsByClassName("sliderItem")[slideindex];
+  listItem.querySelector("#numberPets").innerHTML = "Number of pets: " + animals[slideindex].pets;
+  animals[slideindex].type === "dog" ? document.querySelector("#dogSound").play() : document.querySelector("#catSound").play();
   let icon = document.querySelector("li.shown .animalIcon");
   shake(icon);
 
-  document.querySelector("li.shown .animatedText").style.display = "block";
+  document.querySelector("li.shown #animatedText").style.display = "block";
   setTimeout(function () {
-    document.querySelector("li.shown .animatedText").style.display = "none";
+    document.querySelector("li.shown #animatedText").style.display = "none";
   }, 2500);
 }
 function checkName() {
@@ -62,41 +59,48 @@ function checkName() {
 function createAnimal2(animal){
   let template = document.querySelector("#animalItem");
   let clone = template.content.cloneNode(true);
-  let li = clone.querySelector(".sliderItem");
+  let li = clone.querySelector(".sliderItem ");
   console.log( li.childNodes[1].childNodes);
-  li.childNodes[1].childNodes[1].innerHTML = animal.name;
-  animal.type === "dog" ? li.childNodes[1].childNodes[3].classList.add("fa-dog") : li.childNodes[1].childNodes[3].classList.add("fa-cat"); 
-  li.childNodes[1].childNodes[5].innerHTML="Number of pets :" + animal.pets
-  document.getElementById("slider").appendChild(li);
+  let div = li.querySelector(".content");
+  let name = div.querySelector("#h4Name");
+  name.innerHTML = animal.name;
+  let iconWrapper = div.querySelector("#iconTextWrapper");
+  let icon = iconWrapper.querySelector(".animalIcon");
+  let animatedText = iconWrapper.querySelector("#animatedText");
+  animal.type === "dog" ? icon.classList.add("fa-dog") : icon.classList.add("fa-cat"); 
+  animal.type === "dog" ? animatedText.innerHTML = "Ham!" : animatedText.innerHTML = "Miaw!";
+  let numberPets = div.querySelector("#numberPets");
+  numberPets.innerHTML="Number of pets :" + animal.pets
+  document.querySelector("#slider").appendChild(li);
 
 }
-function createAnimal(animal) {
-  var content = document.createElement("DIV");
-  content.classList.add("content");
-  var h4 = document.createElement("H4");
-  h4.innerHTML = animal.name;
-  var li = document.createElement("li");
-  li.classList.add("sliderItem");
-  content.appendChild(h4);
-  let animatedText = document.createElement("div");
-  animatedText.classList.add("animatedText")
-  var icon = document.createElement("i");
-  icon.classList.add("fas", "animalIcon");
-  if (animal.type === "dog") {
-    animatedText.innerHTML = "Ham!"
-    icon.classList.add("fa-dog");
-  } else {
-    animatedText.innerHTML = "Miaw!"
-    icon.classList.add("fa-cat");
-  }
-  content.appendChild(icon);
-  content.appendChild(animatedText);
-  var pets = document.createElement("h4");
-  pets.innerHTML = "Number of pets: " + animal.pets;
-  content.appendChild(pets);
-  li.appendChild(content);
-  document.getElementById("slider").appendChild(li);
-}
+// function createAnimal(animal) {
+//   var content = document.createElement("DIV");
+//   content.classList.add("content");
+//   var h4 = document.createElement("H4");
+//   h4.innerHTML = animal.name;
+//   var li = document.createElement("li");
+//   li.classList.add("sliderItem");
+//   content.appendChild(h4);
+//   let animatedText = document.createElement("div");
+//   animatedText.classList.add("animatedText")
+//   var icon = document.createElement("i");
+//   icon.classList.add("fas", "animalIcon");
+//   if (animal.type === "dog") {
+//     animatedText.innerHTML = "Ham!"
+//     icon.classList.add("fa-dog");
+//   } else {
+//     animatedText.innerHTML = "Miaw!"
+//     icon.classList.add("fa-cat");
+//   }
+//   content.appendChild(icon);
+//   content.appendChild(animatedText);
+//   var pets = document.createElement("h4");
+//   pets.innerHTML = "Number of pets: " + animal.pets;
+//   content.appendChild(pets);
+//   li.appendChild(content);
+//   document.getElementById("slider").appendChild(li);
+// }
 function addAnimal() {
   document.getElementById("home").style.opacity = "0.2";
   document.getElementById("addModal").style.display = "block";
@@ -135,9 +139,9 @@ function previousSlide() {
 }
 
 function nextAnimal() {
-  var listItems = document.getElementsByClassName("sliderItem");
+  let listItems = document.getElementsByClassName("sliderItem");
   slideindex = (slideindex + listItems.length) % listItems.length;
-  for (var i = 0; i < listItems.length; i++) {
+  for (let i = 0; i < listItems.length; i++) {
     listItems[i].classList.toggle("shown", i === slideindex);
   }
 }
