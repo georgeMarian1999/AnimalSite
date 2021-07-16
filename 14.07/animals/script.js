@@ -59,6 +59,21 @@ function shake(icon) {
     }
   );
 }
+function nod(element){
+  console.log(element);
+  element.animate(
+    [
+      { transform: "translateY(0px)" },
+      { transform: "translateY(15px)" },
+      { transform: "translateY(-15px)" },
+      { transform: "translateY(0px)" },
+    ],
+    {
+      duration: 400,
+      iterations: 2,
+    }
+  );
+}
 function pet() {
   let animals = JSON.parse(localStorage.getItem("animals"));
   animals[slideindex].pets += 1;
@@ -66,9 +81,10 @@ function pet() {
   let listItem = document.getElementsByClassName("sliderItem")[slideindex];
   listItem.querySelector("#numberPets").innerHTML = "Number of pets: " + animals[slideindex].pets;
   animals[slideindex].type === "dog" ? document.querySelector("#dogSound").play() : document.querySelector("#catSound").play();
-  let icon = document.querySelector("li.shown .animalIcon");
-  shake(icon);
-
+  shake(document.querySelector("li.shown .animalIcon"));
+  //nod(document.querySelector("li.shown div.content .head"));
+  //animals[slideindex].type === "dog" ? nod(document.querySelector(".head")) : nod(document.querySelector(".head"));
+  //nod(document.querySelector(".crtHead"));
   document.querySelector("li.shown #animatedText").style.display = "block";
   setTimeout(function () {
     document.querySelector("li.shown #animatedText").style.display = "none";
@@ -80,16 +96,20 @@ function checkName() {
   } else document.getElementById("saveButton").disabled = true;
 }
 function createAnimal(animal){
-  let template = document.querySelector("#animalItem");
+  let template;
+  template = document.querySelector("#animalItem");
+  //animal.type === "dog" ? template = document.querySelector("#animalItemSVGDog") : template = document.querySelector("#animalItemSVGCat");
   let clone = template.content.cloneNode(true);
-  let li = clone.querySelector(".sliderItem ");
+  let li = clone.querySelector(".sliderItem");
   let div = li.querySelector(".content");
   let name = div.querySelector("#h4Name");
   name.innerHTML = animal.name;
   let iconWrapper = div.querySelector("#iconTextWrapper");
+  
+
   let icon = iconWrapper.querySelector(".animalIcon");
-  let animatedText = iconWrapper.querySelector("#animatedText");
   animal.type === "dog" ? icon.classList.add("fa-dog") : icon.classList.add("fa-cat"); 
+  let animatedText = iconWrapper.querySelector("#animatedText");
   animal.type === "dog" ? animatedText.innerHTML = "Ham!" : animatedText.innerHTML = "Miaw!";
   let numberPets = div.querySelector("#numberPets");
   numberPets.innerHTML="Number of pets :" + animal.pets
@@ -148,7 +168,7 @@ function saveAnimal() {
   localStorage.setItem("animals", JSON.stringify(animals));
   createAnimal(animal);
   closeModal();
-  enablePrevNextButtons();
+  
 }
 document.addEventListener("DOMContentLoaded", function c() {
   load();
@@ -167,8 +187,11 @@ function previousSlide() {
 
 function nextAnimal() {
   let listItems = document.getElementsByClassName("sliderItem");
+  //document.querySelector("li .head").classList.toggle("crtHead",false);
   slideindex = (slideindex + listItems.length) % listItems.length;
   for (let i = 0; i < listItems.length; i++) {
     listItems[i].classList.toggle("shown", i === slideindex);
+    
   }
+  //document.querySelector("li.shown .head").classList.toggle("crtHead",true);
 }
