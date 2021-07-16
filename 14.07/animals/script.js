@@ -18,9 +18,32 @@ var animals = [
 ];
 function load() {
   let animals = JSON.parse(localStorage.getItem("animals"));
-  for (let i = 0; i < animals.length; i++) {
-    createAnimal2(animals[i]);
+  if(animals){
+    for (let i = 0; i < animals.length; i++) {
+      createAnimal(animals[i]);
+    }
+    enablePrevNextButtons();
   }
+  else {
+    createNoAnimalsMessage();
+  }
+}
+function createNoAnimalsMessage(){
+  let template = document.querySelector("#noAnimalsItem");
+  let clone = template.content.cloneNode(true);
+  let li = clone.querySelector(".sliderItem ");
+  document.querySelector("#slider").appendChild(li);
+  let nextButton = document.querySelector("#nextButton");
+  let prevButton = document.querySelector("previousButton");
+  console.log(nextButton.querySelector("a"));
+  //document.querySelector("#nextButton").querySelector("a").toggle("disabled",true);
+  //document.querySelector("#previousButton").querySelector("a").toggle("disabled",true);
+}
+function enablePrevNextButtons(){
+  let nextButton = document.querySelector("#nextButton");
+  let prevButton = document.querySelector("previousButton");
+  //document.querySelector("#nextButton").querySelector("a").toggle("disabled",false);
+  //document.querySelector("#previousButton").querySelector("a").toggle("disabled",false);
 }
 function shake(icon) {
   icon.animate(
@@ -56,11 +79,10 @@ function checkName() {
     document.getElementById("saveButton").disabled = false;
   } else document.getElementById("saveButton").disabled = true;
 }
-function createAnimal2(animal){
+function createAnimal(animal){
   let template = document.querySelector("#animalItem");
   let clone = template.content.cloneNode(true);
   let li = clone.querySelector(".sliderItem ");
-  console.log( li.childNodes[1].childNodes);
   let div = li.querySelector(".content");
   let name = div.querySelector("#h4Name");
   name.innerHTML = animal.name;
@@ -112,6 +134,10 @@ function closeModal() {
 }
 function saveAnimal() {
   let animals = JSON.parse(localStorage.getItem("animals"));
+  if(!animals){
+    animals = [];
+    document.querySelector("#slider").innerHTML = "";
+  }
   let select = document.getElementById("typeSelect");
   const animal = {
     name: document.getElementById("animalName").value,
@@ -120,12 +146,13 @@ function saveAnimal() {
   };
   animals.push(animal);
   localStorage.setItem("animals", JSON.stringify(animals));
-  createAnimal2(animal);
+  createAnimal(animal);
   closeModal();
+  enablePrevNextButtons();
 }
 document.addEventListener("DOMContentLoaded", function c() {
   load();
-  // localStorage.clear();
+   //localStorage.clear();
   //localStorage.setItem("animals", JSON.stringify(animals));
   nextAnimal();
 });

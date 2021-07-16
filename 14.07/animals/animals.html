@@ -22,12 +22,21 @@
       </div>
     </li>
   </template>
+  <template id="noAnimalsItem">
+    <li class="sliderItem shown">
+      <div class="content">
+        <h4 id="h4Name">
+          There are no animals in the database. Please add one to get started.
+        </h4>
+      </div>
+    </li>
+  </template>
   <div id="home">
     <div class="wrapper">
       <audio src="dog.mp3" hidden type="audio/mpeg" id="dogSound"></audio>
       <audio src="cat.mp3" hidden type="audio/mpeg" id="catSound"></audio>
-      <div class="nextButton"><a href="javascript:void(0)" onclick="nextSlide()"><i class="fas fa-forward"></i></a></div>
-      <div class="previousButton"><a href="javascript:void(0)" onclick="previousSlide()"><i class="fas fa-backward"></i></a></div>
+      <div id="nextButton"><a href="javascript:void(0)" onclick="nextSlide()"><i class="fas fa-forward"></i></a></div>
+      <div id="previousButton"><a href="javascript:void(0)" onclick="previousSlide()"><i class="fas fa-backward"></i></a></div>
       <div class="petButton"><a href="javascript:void(0)" onclick="pet()"><i class="fas fa-hand-sparkles"></i></a></div>
       <div>
         <ul id="slider">
